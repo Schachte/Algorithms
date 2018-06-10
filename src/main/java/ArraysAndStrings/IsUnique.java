@@ -1,11 +1,8 @@
 package ArraysAndStrings;
 
 import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 /**
  * Overall goal is to be able to check if all characters within a given string are unique
@@ -23,7 +20,7 @@ public class IsUnique {
         "zmxnjdu",
         "zxcvbnmz",
         "asddfghk"
-    )
+      )
        .stream()
        .filter(IsUnique::isUnique)
        .forEach(System.out::println);
