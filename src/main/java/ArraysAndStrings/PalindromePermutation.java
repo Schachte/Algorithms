@@ -64,8 +64,6 @@ public class PalindromePermutation {
     }
   }
 
-
-
 //  public static void permute(String inputString) {
 //    permuteHelper(inputString, "");
 //  }
