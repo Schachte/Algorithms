@@ -2,7 +2,6 @@ package ArraysAndStrings;
 
 import com.google.common.collect.ImmutableList;
 import java.util.List;
-import util.Util;
 
 /**
  * Goal is to take a string like aabbccccaa and turn it into a2b2c3a2
