@@ -1,5 +1,4 @@
 package TreesAndGraphs;
-import apple.laf.JRSUIUtils.Tree;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,14 +8,14 @@ import java.util.Queue;
  * The goal is to create a list of linkedlists for D depths of a given tree
  */
 public class LLDepths {
+  private TreeNode root;
 
-  static TreeNode root;
-
-  private static class TreeNode {
-    TreeNode left;
-    TreeNode right;
+  /** Node structure within the tree */
+  static class TreeNode {
     int val;
     String name;
+    TreeNode left;
+    TreeNode right;
 
     public TreeNode(int val, String name) {
       this.val = val;
@@ -31,22 +30,18 @@ public class LLDepths {
     }
   }
 
-  public static void main(String[] args) {
-    // Simple Tree Construction
-    TreeNode n3 = new TreeNode(200, "n3");
-    TreeNode n4 = new TreeNode(40, "n4");
-    TreeNode n5 = new TreeNode(10, "n5");
-    TreeNode n6 = new TreeNode(490, "n6");
-    TreeNode n1 = new TreeNode(34, n3, n4, "n1");
-    TreeNode n2 = new TreeNode(100, n5, n6, "n2");
-    root = new TreeNode(100, n1, n2, "root");
-
-    List<LinkedList<TreeNode>> depthList = printTreeDepths();
-    for (int i = 0; i < depthList.size(); i++) {
-      printLevel(depthList.get(i), i);
-    }
+  public TreeNode getRoot() {
+    return root;
   }
 
+  public void setRoot(TreeNode root) {
+    this.root = root;
+  }
+
+  public static void main(String[] args) {
+  }
+
+  /** Simple level printer when traversing through all the depths of the tree */
   private static void printLevel(LinkedList<TreeNode> levelList, int level) {
     System.out.println("Level: " + level);
     while (levelList.peek() != null) {
@@ -60,7 +55,7 @@ public class LLDepths {
    * The trick to track the number of null encounters to determine depth in real-time
    * */
 
-  public static List<LinkedList<TreeNode>> printTreeDepths() {
+  public List<LinkedList<TreeNode>> generateDepthList() {
     // Going to create a new list of nodes for each depth that we encounter
     List<LinkedList<TreeNode>> depthList = new ArrayList<>();
     Queue<TreeNode> adjTracker = new LinkedList();
@@ -74,7 +69,9 @@ public class LLDepths {
       TreeNode tmpNode = adjTracker.poll();
       if (tmpNode == null){
         currentDepth++;
-        depthList.add(createDepthList(adjTracker));
+        LinkedList<TreeNode> tmpList = createDepthList(adjTracker);
+        if (tmpList.size() > 0)
+          depthList.add(createDepthList(adjTracker));
         adjTracker.add(null);
         if (adjTracker.peek() == null) break; // avoid infinite loop on double null vals
         else continue;
@@ -91,7 +88,8 @@ public class LLDepths {
   }
 
   /** Get an LL representation of the current depth */
-  private static LinkedList<TreeNode> createDepthList(Queue<TreeNode> currentDepthNodes) {
+  private LinkedList<TreeNode> createDepthList(Queue<TreeNode> currentDepthNodes) {
+    // Store copy to not override original reference
     Queue<TreeNode> nodeCopy = new LinkedList<>(currentDepthNodes);
     LinkedList<TreeNode> depthList = new LinkedList<>();
     while (!nodeCopy.isEmpty()) {
