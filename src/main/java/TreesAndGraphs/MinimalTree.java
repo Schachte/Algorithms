@@ -35,15 +35,12 @@ public class MinimalTree {
    * @return root of the entire balanced BST
    */
   public static TreeNode minBST(int[] dataArr, int start, int end) {
-
     if (end < start) {
       return null;
     }
-
     int mid = start + end / 2;
 
     TreeNode rootNode = new TreeNode(dataArr[mid]);
-
     rootNode.left = minBST(dataArr, start, mid-1);
     rootNode.right = minBST(dataArr, mid + 1, end);
 
