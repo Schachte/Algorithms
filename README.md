@@ -2,6 +2,8 @@
 
 > Various algorithms prepped from CTCI, EPI, Leet, FireCode, etc
 
+You can view my Graph API [here](https://github.com/Schachte/Java-Simple-Graph) used for many graph theory & tree problems
+
 Goal Categories To Hit (With Optimality):
 
 - String Manipulation
