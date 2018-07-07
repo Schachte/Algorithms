@@ -7,7 +7,7 @@ public class CheckPalindrome {
    * @param input
    * @return true if the input is a palindrome
    */
-  public static boolean checkPalindrome(int input) {
+  public boolean checkPalindrome(int input) {
     int rev = 0;
     int inBk = input;
     while (input > 0) {
