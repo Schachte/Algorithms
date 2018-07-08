@@ -20,7 +20,7 @@ public class PermuteArr {
     input.add(2);
     input.add(3);
     input.add(4);
-//    permute(input, output);
+    permute(input, output);
     permuteString("hello", "");
 
   }
