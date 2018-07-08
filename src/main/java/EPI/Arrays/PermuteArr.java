@@ -20,7 +20,26 @@ public class PermuteArr {
     input.add(2);
     input.add(3);
     input.add(4);
-    permute(input, output);
+//    permute(input, output);
+    permuteString("hello", "");
+
+  }
+
+  public static void permuteString(String input, String permutation) {
+    if (input.isEmpty()) {
+      System.out.println(permutation);
+    }
+
+    for (int i = 0; i < input.length(); i++) {
+      char chosen = input.charAt(i);
+      input = input.substring(0, i) + input.substring(i+1, input.length());
+      permutation += chosen;
+
+      permuteString(input, permutation);
+
+      input = chosen + input;
+      permutation = permutation.substring(0, permutation.length()-1);
+    }
 
   }
 
