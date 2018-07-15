@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="algos" target="1.8" />
+      <module name="algos" target="1.8.0_152-release" />
     </bytecodeTargetLevel>
   </component>
 </project>

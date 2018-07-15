@@ -2,7 +2,7 @@ package EPI.Strings;
 
 import static org.junit.Assert.*;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
+import java.lang.IllegalArgumentException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ public class RomanNumeralTest {
   }
 
   @Test
-  public void convertBruteForce() throws InvalidArgumentException {
+  public void convertBruteForce() throws IllegalArgumentException{
     assertEquals(4, RomanNumeral.convertBruteForce("IV"));
     assertEquals(1984, RomanNumeral.convertBruteForce("MCMLXXXIV"));
     assertEquals(1944, RomanNumeral.convertBruteForce("MCMXLIV"));

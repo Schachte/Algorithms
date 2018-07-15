@@ -1,7 +1,7 @@
 package EPI.Strings;
 
 import com.google.common.collect.ImmutableList;
-import com.sun.javaws.exceptions.InvalidArgumentException;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +15,7 @@ public class RomanNumeral {
   static Map<Character, Integer> romanVals = new HashMap<>();
 
   /** Accounts for exception clauses and valdiation */
-  public static int convertBruteForce(String romanInput) throws InvalidArgumentException {
+  public static int convertBruteForce(String romanInput) {
     int total = 0;
     int prev = 0;
     for (int i = romanInput.length()-1; i >= 0; i--) {
@@ -32,7 +32,7 @@ public class RomanNumeral {
           total -= romanVals.get(currentNumeral);
           prev = romanVals.get(currentNumeral);
         } else {
-          throw new InvalidArgumentException(new String[]{"The input roman numeral is invalid"});
+          System.out.println("error");
         }
       } else {
         total += romanVals.get(currentNumeral);

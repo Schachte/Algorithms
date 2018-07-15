@@ -1,13 +1,12 @@
 package TreesAndGraphs;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import graph.api.Node;
 import graph.impl.NodeImpl;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MinBSTConstruction2 {
-  public static void main(String[] args) throws InvalidArgumentException {
+  public static void main(String[] args) throws IllegalArgumentException{
     testValid();
   }
 
@@ -31,18 +30,18 @@ public class MinBSTConstruction2 {
     return vals;
   }
 
-  public static void testValid() throws InvalidArgumentException {
+  public static void testValid() {
     int[] inputArr = new int[]{1,5,12,17,21,38,52};
     Node root = createMinBST(inputArr, 0, inputArr.length-1);
     List<Integer> sortedArr = inOrder(root, new ArrayList<>());
     if (inputArr.length == sortedArr.size()) {
       for (int i = 0; i < inputArr.length; i++) {
         if (inputArr[i] != sortedArr.get(i)) {
-          throw new InvalidArgumentException(new String[]{"Sorted B-Tree Invalid"});
+            throw new IllegalArgumentException("Error");
         }
       }
     } else {
-      throw new InvalidArgumentException(new String[]{"Sorted B-Tree Invalid"});
+      throw new IllegalArgumentException("Error");
     }
   }
 }
